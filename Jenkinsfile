@@ -48,7 +48,7 @@ pipeline {
                 script {
                     if (env.ENVIRONMENT == 'prod') {
                         dir('prod') {
-                            sh 'terraform destroy --auto-approve'
+                            sh 'terraform -input=false -out=tfplan'
                         }
                     } else if (env.ENVIRONMENT == 'non-prod') {
                         dir('non-prod') {
